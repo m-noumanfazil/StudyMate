@@ -1,0 +1,32 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+environment/
+
+# Environment variables / secrets
+.env
+
+# Database files (local SQLite)
+data/*.db
+
+# Chroma vector DB
+chroma_db/
+
+# Uploaded files
+uploads/
+
+# IDE / OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Streamlit cache (optional)
+.streamlit/
+
+# Logs
+*.log
