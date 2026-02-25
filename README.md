@@ -1,10 +1,13 @@
-![Alt text](static/images.png)
+<div align="center">
+  <img src="static/images.png" alt="Alt text" width="400"/>
 
-# StudyMate 📚
-**Your AI-powered academic co-pilot for deep, focused learning.**  
-The “Study Buddy” that actually *remembers* what you’re studying.
 
-🎯 Focused Learning · 🧠 Smart Document Q&A · ⚡ Instant Session Recall  
+<h1>StudyMate 📚</h1>
+  <p><b>Your AI-powered academic co-pilot for deep, focused learning.</b></p>
+  <p>The “Study Buddy” that actually <i>remembers</i> what you’re studying.</p>
+  <p>🎯 Focused Learning · 🧠 Smart Document Q&A · ⚡ Instant Session Recall</p>
+
+</div>
 
 ---
 
@@ -80,5 +83,6 @@ StudyMate/
 ```
 
 
-# ⚠️ Note: 
+## ⚠️ Note: 
 Live deployment is coming soon. 
+
