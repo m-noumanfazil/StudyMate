@@ -110,10 +110,10 @@ class Database:
 
     def delete_session(self, session_name):
         session_id = self.get_session_id(session_name)
-        print("Deleting session_id:", session_id)  # DEBUG
         if not session_id:
             print("No session_id found!")
             return False
+        print("Deleting session_id:", session_id)  # DEBUG
         # Delete messages
         deleted_messages = self.cursor.execute("DELETE FROM messages WHERE session_id=?", (session_id,)).rowcount
         print("Messages deleted:", deleted_messages)
