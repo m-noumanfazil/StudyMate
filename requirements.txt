@@ -9,4 +9,5 @@ chromadb==0.4.24
 pypdf==4.1.0
 huggingface-hub==0.20.3
 pydantic==2.6.4
-langchain_experimental
+langchain-experimental
+
