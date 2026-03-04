@@ -16,6 +16,7 @@ from datetime import datetime
 import io
 from pypdf import PdfReader
 from langchain_core.documents import Document
+from langchain_experimental.text_splitter import SemanticChunker
 
 
 load_dotenv()
@@ -215,10 +216,10 @@ class vectordb:
         self.persist_directory = persist_dir
         self.database = Database(db_path=db_path)
         self.database._create_tables()
-        self.textsplitter = RecursiveCharacterTextSplitter(
-            chunk_size=500,
-            chunk_overlap=100,
-            separators=["\n\n", "\n", ".", " "]
+        self.textsplitter = SemanticChunker(
+            self.embedding_engine,
+            breakpoint_threshold_type="percentile",
+            breakpoint_threshold_amount=85
         )
         print("Vector database initialized successfully.")
 
