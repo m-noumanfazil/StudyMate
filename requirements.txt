@@ -1,19 +1,19 @@
-streamlit==1.31.0
-python-dotenv==1.0.1
+streamlit
+python-dotenv
 
-langchain>=0.1.17
-langchain-community>=0.0.38
-langchain-huggingface>=0.0.3
-langchain-chroma>=0.1.0
-langchain-experimental==0.0.50
+langchain
+langchain-community
+langchain-huggingface
+langchain-chroma
+langchain-experimental
 langchain-groq
 
-sentence-transformers==2.6.1
-chromadb==0.4.24
-pypdf==4.1.0
+sentence-transformers
+chromadb
+pypdf
 
-huggingface-hub>=0.23.0
-pydantic==2.6.4
-supabase==2.4.0
-psycopg2-binary==2.9.9
+huggingface-hub
+pydantic
+supabase
+psycopg2-binary
 langchain-experimental
