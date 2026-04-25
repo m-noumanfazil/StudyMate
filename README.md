@@ -142,7 +142,8 @@ Track session activity, review uploaded documents, or delete outdated sessions t
 - sentence-transformers — embedding backend
 
 
-## Live URL: https://s-t-u-d-y-m-a-t-e.streamlit.app/
+## Live URL: 
+### https://s-t-u-d-y-m-a-t-e.streamlit.app/
 
 
 ## 👤 Author
