@@ -22,7 +22,7 @@ st.set_page_config(page_title="StudyMate", page_icon=icon_path, layout="wide")
 # --- Initialize Backend ---
 @st.cache_resource
 def get_backend():
-    vdb = vectordb(db_path=DB_PATH, persist_dir=CHROMA_DIR)
+    vdb = vectordb()    
     assistant = RAGAssistant(vdb)
     return vdb, assistant
 
@@ -101,7 +101,7 @@ with st.sidebar:
         placeholder="Choose a session..."
     )
     
-    if selected_session != st.session_state.active_session:
+    if selected_session and selected_session != st.session_state.active_session:
         st.session_state.active_session = selected_session
         st.session_state.view_mode = "ingest"
         session_id = db.get_session_id(selected_session)
@@ -268,7 +268,7 @@ else:
                 session_id = db.get_session_id(st.session_state.active_session)
                 st.session_state.current_docs = db.get_documents(session_id)
                 
-                st.rerun()
+               # st.rerun()
             else:
                 st.warning("No files selected.")
     
@@ -299,79 +299,6 @@ else:
                 st.text(f"📄 {doc[2]}")
         else:
             st.write("No documents in this session yet.")
-
-
-    # --- Ingest View ---
-#    if st.session_state.view_mode == "ingest":
-#        # Gradient Documents title
-#        st.markdown(f"""
-#        <h1 style="
-#            font-size:2.5rem;
-#            font-weight:700;
-#            background: linear-gradient(90deg, #22C55E, #38BDF8, #6A5ACD);
-#            -webkit-background-clip: text;
-#            -webkit-text-fill-color: transparent;
-#            margin-bottom:10px;
-#        ">
-#        📂 Session: {st.session_state.active_session}
-#        </h1>
-#        """, unsafe_allow_html=True)
-#        
-#        # Upload PDFs heading gradient
-#        st.markdown(f"""
-#        <h2 style="
-#            font-size:1.8rem;
-#            font-weight:600;
-#            background: linear-gradient(90deg, #2EEA7D, #4ADE80, #3B82F6);
-#            -webkit-background-clip: text;
-#            -webkit-text-fill-color: transparent;
-#            margin-bottom:5px;
-#        ">
-#        Upload PDFs
-#        </h2>
-#        """, unsafe_allow_html=True)
-#    
-#        uploaded_files = st.file_uploader("Select PDF files", type=["pdf"], accept_multiple_files=True)
-#        
-#        if st.button("Add to Session"):
-#            if uploaded_files:
-#                with st.status("Processing PDFs..."):
-#                    saved_paths = []
-#                    for uploaded_file in uploaded_files:
-#                        file_path = os.path.join(UPLOAD_DIR, uploaded_file.name)
-#                        with open(file_path, "wb") as f:
-#                            f.write(uploaded_file.getbuffer())
-#                        saved_paths.append(file_path)
-#                    vdb.add_file(saved_paths, st.session_state.active_session)
-#                    st.success(f"{len(saved_paths)} document(s) added successfully!")
-#            else:
-#                st.warning("No files selected.")
-#    
-#        st.divider()
-#        
-#        # --- Current Documents heading right above the list ---
-#        st.markdown(f"""
-#        <h2 style="
-#            font-size:1.8rem;
-#            font-weight:600;
-#            background: linear-gradient(90deg, #00CED1, #7F00FF, #22C55E);
-#            -webkit-background-clip: text;
-#            -webkit-text-fill-color: transparent;
-#            margin-bottom:5px;
-#        ">
-#        Current Documents
-#        </h2>
-#        """, unsafe_allow_html=True)
-#    
-#        # Display list of documents
-#        session_id = db.get_session_id(st.session_state.active_session)
-#        docs = db.get_documents(session_id)
-#        if docs:
-#            for doc in docs:
-#                st.text(f"📄 {doc[2]}")
-#        else:
-#            st.write("No documents in this session yet.")
-
 
     # --- Chat View ---
     elif st.session_state.view_mode == "chat":
